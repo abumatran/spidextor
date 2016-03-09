@@ -2,7 +2,7 @@
 
 Spidextor is a simple glueing script for running Bitextor (https://sourceforge.net/projects/bitextor/), a bitext extraction tool, on the output of SpiderLing (http://corpus.tools/wiki/SpiderLing), a crawler focused on text.
 
-The two dependcies are Python<=2.7 and make.
+The two dependencies are Python<=2.7 and make.
 
 You should first edit the config.py file with your own parameters.
 
