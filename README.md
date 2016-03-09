@@ -2,10 +2,20 @@
 
 Spidextor is a simple glueing script for running Bitextor (https://sourceforge.net/projects/bitextor/), a bitext extraction tool, on the output of SpiderLing (http://corpus.tools/wiki/SpiderLing), a crawler focused on text.
 
+## Dependencies
+
 The two dependencies are Python<=2.7 and make.
 
-You should first edit the config.py file with your own parameters.
+## Running Spidextor
 
-Next you should feed the prevert format from SpiderLing (the result of physical deduplication obtained by util/remove_duplicates.py) to spiderling2bitextor.py. It will organise data by domain and keep only those domains in which data in both languages was found. It is written in bitextor_output/ with a '.lett.gz' extension.
+You should first edit the `config.py` file and define your own parameters. Each parameter is followed by an explanatory comment.
 
-The final step of spiderling2bitextor.py is running bitextor_output/Makefile. It controls the job scheduling of Bitextor over the prepared data.
+Spidextor is run via the `spidextor.py`script. You can get the help via ./spidextor.py -h.
+
+The input format for Spidextor is the "prevert" format from SpiderLing (the result of physical deduplication obtained by the SpiderLings `util/remove_duplicates.py`). It can be given either as an argument or fed to STDIN.
+
+What Spidextor does is the following:
+* It organises data by domain, encoding them in the Bitextor format, and keeps only those domains in which data in both languages was found (`.lett.gz` extensions)
+* It generates a Makefile and runs it with the predefined number of jobs
+* Each job runs the Bitextor pipeline, domain by domain
+* The results are can be found in the output directory, organised by domain in the predefined formats
